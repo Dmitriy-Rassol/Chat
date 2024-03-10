@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>Socket.IO chat</title>
     <style>
       body {
@@ -71,7 +72,42 @@
     ></script>
 
     <script>
-        const socket = io('ws://localhost:9000');
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+      async function go1() {
+        const socket = io("ws://localhost:9000");
+        socket.on("message", (payload) => console.log("message", payload));
+        socket.emit("join", { id: "hello" });
+        await sleep(4000);
+        socket.emit("send", { to: "hello", message: "from first" }, (payload) =>
+          console.log("from send to Hello", payload)
+        );
+      }
+
+      async function go2() {
+        const socket = io("ws://localhost:9001");
+        socket.on("message", (payload) => console.log("message", payload));
+        socket.emit("join", { id: "hello" });
+        socket.emit("join", { id: "bye" });
+        await sleep(5000);
+
+        socket.emit(
+          "send",
+          { to: "hello", message: "from second" },
+          (payload) => console.log("from send to Bye", payload)
+        );
+      }
+
+      async function go3() {
+        const socket = io("ws://localhost:9002");
+        socket.on("message", (payload) => console.log("message", payload));
+        socket.emit("join", { id: "bye" });
+        await sleep(5000);
+
+        socket.emit("send", { to: "bye", message: "from third" }, (payload) =>
+          console.log("from send to Bye", payload)
+        );
+      }
     </script>
   </body>
 </html>
