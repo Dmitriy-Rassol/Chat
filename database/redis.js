@@ -6,7 +6,9 @@ const localId =
   (Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6) +
   (Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6);
 
-const client = createClient();
+const client = createClient({
+  url:'redis://redis:6379'
+});
 const pubClient = client.duplicate();
 const subClient = client.duplicate();
 
@@ -27,17 +29,8 @@ async function set(key, value) {
   }
 }
 
-async function setObject(key, value) {
-  await client.hSet(key, value);
-}
-
-async function getObject(key) {
-  await client.hGet(key);
-}
-
 async function pub(type, payload) {
   payload.publisher = localId;
-  console.log(localId);
   return pubClient.publish(type, JSON.stringify(payload));
 }
 
@@ -52,8 +45,6 @@ async function sub(type, callback) {
 module.exports = {
   get,
   set,
-  setObject,
-  getObject,
   del: client.del,
   pub,
   sub,

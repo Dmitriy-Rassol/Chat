@@ -1,8 +1,79 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+#form {
+  background: rgba(243, 245, 250);
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+#room {
+  margin: 5px;
+  outline: none;
+  border: none;
+  background: none;
+  border-bottom: 1px solid #000000;
+}
+
+#input {
+  border: none;
+  flex-grow: 1;
+  padding: 0 1rem;
+  margin-right: 1rem;
+  border-radius: 15px;
+}
+
+#form > button {
+  background: #2aabee;
+  border: none;
+  padding: 0 1rem;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 15px 15px 4rem 15px;
+}
+
+#messages > li {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+#messages > li.left {
+  align-items: start;
+}
+
+#messages > li.left span {
+  background: #2aabee;
+  color: #ffffff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+#messages > li.right {
+  align-items: end;
+}
+
+#messages > li.right span {
+  background: #ffffff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+#messages > li span {
+  padding: 15px;
+  border-radius: 8px;
 }
