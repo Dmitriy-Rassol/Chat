@@ -1,5 +1,10 @@
 # МАСШТАБИРУЕМЫЙ МНОГОПОЛЬЗОВАТЕЛЬСКИЙ ЧАТ НА SOCKET.IO И REDIS
 
+![image](https://github.com/Dmitriy-Rassol/Chat/assets/52157280/08cec175-572a-421a-b0f8-40bf0e5db3db)
+![image](https://github.com/Dmitriy-Rassol/Chat/assets/52157280/8feb7a5b-df42-4f8d-bcfd-92c4912106b2)
+
+
+
 ## Используемые NPM пакеты 
 
 - [cors](https://www.npmjs.com/package/cors) (^2.8.5)
